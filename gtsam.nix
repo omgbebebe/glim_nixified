@@ -11,15 +11,14 @@
 
 stdenv.mkDerivation rec {
   pname = "gtsam";
-  version = "4.2";
+  version = "4.3a0";
 
   src = fetchFromGitHub {
     owner = "borglab";
     repo = "gtsam";
     rev = "release/${version}";
-    hash = "sha256-MO2qWMxU0E8egvgGI5/CdBe09DXpIW9W+wErWQs9XXs=";
+    hash = "sha256-CQvFXjaCkAha8cezcmDdf7pcWZb1Ds66XPnLrEASOrE=";
   };
-
   patches = [];
 
   nativeBuildInputs = [

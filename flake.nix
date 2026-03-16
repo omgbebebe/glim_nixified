@@ -33,8 +33,6 @@
           name = "Example project";
           packages = (with pkgs; [
             colcon
-            #boost
-            #eigen
             libGL glfw
             libjpeg libpng
             opencv
@@ -42,7 +40,6 @@
             gtsam
             gtsam_points
             iridescence
-            gcc13
 #            pkgs.cmake pkgs.pkg-config
             # ... other non-ROS packages
 #            (with pkgs.rosPackages.humble; buildEnv {
@@ -63,7 +60,7 @@
             })
           ]);
           shellHook = ''
-            LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${pkgs.rosPackages.jazzy.pcl}/lib/"
+            LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath packages}";
             echo "ROS2 dev environment"
             #mkdir -p src
             #ln -s ${glim-src.out} src/glim

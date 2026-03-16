@@ -37,11 +37,8 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "format" ];
 
   cmakeFlags = [
+    "-DCMAKE_BUILD_TYPE=Release"
     "-DBUILD_WITH_CUDA=OFF"
-    "-DGTSAM_BUILD_EXAMPLES_ALWAYS=OFF"
-    "-DGTSAM_BUILD_TESTS=OFF"
-    "-DGTSAM_WITH_TBB=OFF"
-    "-DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF"
   ];
 
   meta = {
