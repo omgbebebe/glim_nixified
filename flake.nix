@@ -1,9 +1,9 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/25.11";
+#    nixpkgs.url = "github:nixos/nixpkgs/25.11";
     nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/master";
-    nix-ros-overlay.inputs.nixpkgs.follows = "nixpkgs";
-#    nixpkgs.follows = "nix-ros-overlay/nixpkgs";  # IMPORTANT!!!
+#    nix-ros-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.follows = "nix-ros-overlay/nixpkgs";  # IMPORTANT!!!
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
   outputs = { self, nix-ros-overlay, nixpkgs, flake-parts, ... }:
@@ -33,8 +33,8 @@
           name = "Example project";
           packages = (with pkgs; [
             colcon
-            boost
-            eigen
+            #boost
+            #eigen
             libGL glfw
             libjpeg libpng
             opencv
@@ -42,6 +42,7 @@
             gtsam
             gtsam_points
             iridescence
+            gcc13
 #            pkgs.cmake pkgs.pkg-config
             # ... other non-ROS packages
 #            (with pkgs.rosPackages.humble; buildEnv {
@@ -56,6 +57,7 @@
                 rosbag2-cpp
                 rosbag2-compression
                 rosbag2-storage
+                #pcl pcl-ros
                 # ... other ROS packages
               ];
             })
