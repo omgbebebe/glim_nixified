@@ -22,6 +22,12 @@
           rev = "25ad190776f05f6a8d7438686197294f73c5f868";
           hash = "sha256-bZ+teKYRmzro4/WwVo+Rpt366j0bB7c/JH0DEKVMRy4=";
         };
+        glim_ext-src = pkgs.fetchFromGitHub {
+          owner = "koide3";
+          repo = "glim_ext";
+          rev = "b867efc9065450c30f1873990e68c5e49bf65898";
+          hash = "sha256-JKQrpK7TZGQbDVUvhjT7TpVPkYwtMO3XraTfgVbd68c=";
+        };
         glim_ros2-src = pkgs.fetchFromGitHub {
           owner = "koide3";
           repo = "glim_ros2";
@@ -66,9 +72,10 @@
             #ln -s ${glim-src.out} src/glim
             #ln -s ${glim_ros2-src.out} src/glim_ros2
             rm -rf src
-            mkdir -p src/{glim,glim_ros2}
+            mkdir -p src/{glim,glim_ext,glim_ros2}
             cp -RL ${glim-src.out}/* src/glim/
             cp -RL ${glim_ros2-src.out}/* src/glim_ros2/
+            cp -RL ${glim_ext-src.out}/* src/glim_ext/
             chmod -R +w src/
             # patch glim
             patch -p1 -i glim_0001.patch
